@@ -16,7 +16,7 @@ function App() {
     <div className='App'>
       <Header />
 
-      <Route path='/' exact>
+      {/* <Route path='/' exact>
           <Feeling />
       </Route>
 
@@ -38,8 +38,8 @@ function App() {
 
       <Route path='/admin'>
           <Admin />
-      </Route>
-      
+      </Route> */}
+
     </div>
     </Router>
   );
