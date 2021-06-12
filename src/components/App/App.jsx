@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+// import {useEffect} from 'react';
+// import {useDispatch} from 'react-redux';
 
 //for routes
 import { Route, HashRouter as Router } from "react-router-dom";
@@ -20,6 +20,10 @@ import Admin from '../Admin/Admin';
 
 
 function App() {
+
+  // useEffect(() => {
+
+  // },[])
 
   return (
     <Router>
