@@ -15,7 +15,7 @@ const feedback = (state =[], action) => {
         return [...state, action.payload];
   }
 
-  //Create store
+//Create store
 const store = createStore(
     combineReducers({
       feedback,
