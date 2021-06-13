@@ -39,7 +39,7 @@ function Feeling() {
 
         <input onChange={(event) => setUserFeeling(event.target.value)} />
 
-        <button type="submit">SAVE</button>
+        <button type="submit">Next</button>
 
         </form>
 
