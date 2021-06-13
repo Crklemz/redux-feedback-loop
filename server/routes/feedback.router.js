@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     VALUES ($1, $2, $3, $4);`;
 
     const values = [feeling, understanding, support, comments]
-    
+
     pool.query(queryText, values)
     .then(result => {
         res.sendStatus(201);
@@ -35,5 +35,14 @@ router.post('/', (req, res) => {
     
 })
 
+router.delete('/:id', (req, res) => {
+    pool.query(`DELETE FROM "feedback" WHERE id=$1`, [req.params.id])
+    .then(result => {
+        res.sendStatus(200)
+    }).catch(error => {
+        console.log('error in DELETE route', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;
