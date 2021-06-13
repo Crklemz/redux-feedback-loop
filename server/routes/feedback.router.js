@@ -14,29 +14,26 @@ router.get('/', (req, res) => {
     
 })
 
-router.post('/', async (req, res) => {
-    const client = await pool.connect();
+router.post('/', (req, res) => {
 
-    try {
-        const {
-            feeling,
-            understanding,
-            support,
-            comment
-        } = req.body;
-        await client.query('BEGIN')
-        const feedbackResults = await client.query(`INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
-        VALUES ($1, $2, $3, $4)`);
-        
-        await client.query('COMMIT')
+    const {feeling, understanding, support, comments} = req.body;
+
+
+    let queryText = `INSERT INTO "feedback" (feeling, understanding, support, comments)
+    VALUES ($1, $2, $3, $4);`;
+
+    const values = [feeling, understanding, support, comments]
+    
+    pool.query(queryText, values)
+    .then(result => {
         res.sendStatus(201);
-    } catch (error) {
-        await client.query('ROLLBACK')
-        console.log('Error POST /api/order', error);
+    })
+    .catch(error => {
+        console.log('error adding feedback', error);
         res.sendStatus(500);
-    } finally {
-        client.release()
-    }
+    })
+    
 })
+
 
 module.exports = router;

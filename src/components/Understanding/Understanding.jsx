@@ -17,7 +17,7 @@ function Understanding() {
 
         console.log(`clicked submit in understanding component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
-            understanding: userUnderstanding
+            understanding: Number(userUnderstanding)
         }})
         clearField();
         history.push('/support');

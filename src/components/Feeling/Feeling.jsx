@@ -17,7 +17,7 @@ function Feeling() {
 
         console.log(`clicked submit in feeling component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
-            feeling: userFeeling
+            feeling: Number(userFeeling)
         }})
         clearField();
         history.push('/understanding');

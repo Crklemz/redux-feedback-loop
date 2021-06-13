@@ -17,7 +17,7 @@ function Support() {
 
         console.log(`clicked submit in support component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
-            support: userSupport
+            support: Number(userSupport)
         }})
         clearField();
         history.push('/comment');

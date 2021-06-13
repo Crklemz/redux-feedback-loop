@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
+
 //Redux
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
@@ -12,7 +13,10 @@ import logger from 'redux-logger';
 //Reducers
 const feedback = (state =[], action) => {
     if(action.type === 'ADD_FEEDBACK') {
-        return [...state, action.payload];
+      return [...state, action.payload];
+  }
+  if(action.type === 'REMOVE_FEEDBACK') {
+      return [];
   }
   return state;
 }
