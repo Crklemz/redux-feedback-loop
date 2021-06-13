@@ -20,11 +20,7 @@ import Admin from '../Admin/Admin';
 
 
 function App() {
-
-  // useEffect(() => {
-
-  // },[])
-
+  //each page has been made into a component and the Router from react-router-dom is being utilized so each portion/component can have its own url
   return (
     <Router>
     <div className='App'>

@@ -1,33 +1,37 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Admin(props) {
+function Admin() {
 
+    //create variables for use state
     const [userFeedback, setUserFeedback] = useState([]);
 
+    //runs previousFeedback on page load
     useEffect(() => {
         previousFeedback();
       }, []);
 
+    //get request to pull data from DB 
     const previousFeedback = () => {
         axios({
             method: 'GET',
             url: '/feedback'
         }).then (response => {
             console.log(response.data);
-            setUserFeedback(response.data);
+            setUserFeedback(response.data);// sets the userFeedback variable to be the data received from the DB
         }).catch(error => {
             console.log('error during get on admin page', error);
         });
     }
 
+    //delete request to remove individual feedback submissions based on id
     const handleDelete = (item) => {
         axios({
             method: 'DELETE',
             url: `/feedback/${item.id}`
         }).then(response => {
             console.log('response in handleDelete on admin page', response);
-            previousFeedback();
+            previousFeedback();// runs previousFeedback to reprint the most current data in DB
         }).catch(error => {
             console.log('error in handleDelete on admin page', error);
         })
@@ -46,6 +50,7 @@ function Admin(props) {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* loop through the userFeedback array to print each submission on the page */}
                     {userFeedback.map((item, id) => (
                         <tr key={id}>
                             <td>{item.feeling}</td>

@@ -12,6 +12,7 @@ function Support() {
     const [userSupport, setUserSupport] = useState('');
    
 
+    //on submit the support payload is sent to the feedback reducer, the clearField function is called, and history sends the user to the comment page url
     const handleSubmit = (event) => {
         event.preventDefault();
 

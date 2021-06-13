@@ -1,9 +1,9 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+redux-feedback-loop
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This app takes in input from 4 component routes and stores them in a reducer to be posted to a database. On the click of the 'Next' button on the 4 input pages, the inputs are cleared and the information is stored in the reducer for later use. The review page shows the information entered from the previous pages and upon submit, the reducer clears and the info is posted into the database.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+The admin page allows the feedback responses from the database to be viewed and deleted.

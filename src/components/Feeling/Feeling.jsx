@@ -11,9 +11,14 @@ function Feeling() {
 
     const [userFeeling, setUserFeeling] = useState('');
    
+    //on submit the feeling payload is sent to the feedback reducer, the clearField function is called, and history sends the user to the understanding page url
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        // if(event.target.value == undefined) {
+        //     alert('please enter a number to proceed');
+        // } else {
 
         console.log(`clicked submit in feeling component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
@@ -21,13 +26,13 @@ function Feeling() {
         }})
         clearField();
         history.push('/understanding');
+       // } ------> tried to use the if statement above to force the user to enter in a number but was unsuccessfull even with many different slight variations of this if statement above.
+    return;
     }
 
     const clearField = () => {
         setUserFeeling('');
     };
-
-        console.log(userFeeling);
 
     return(
         <>

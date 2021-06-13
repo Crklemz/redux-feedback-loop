@@ -12,6 +12,7 @@ function Understanding() {
     const [userUnderstanding, setUserUnderstanding] = useState('');
    
 
+    //on submit the understanding payload is sent to the feedback reducer, the clearField function is called, and history sends the user to the support page url
     const handleSubmit = (event) => {
         event.preventDefault();
 

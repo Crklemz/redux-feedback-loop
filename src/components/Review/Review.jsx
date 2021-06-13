@@ -13,6 +13,9 @@ function Review() {
 
     const dispatch = useDispatch();
 
+    //on submit, the data collected thus far in the feedback reducer is sent to the DB via a post request.
+    //data was packaged in such a way that it is able to be taken into the DB and an object
+    //clearAllInputs is called on submit to clear the reducer for the next round of feedback being submitted
     const handleSubmit = (event) => {
         event.preventDefault();
         
@@ -51,16 +54,16 @@ function Review() {
         <h1>Review your feedback</h1>
 
         <div>
-            {userReview.map((review, i) => (
-                <div key={i}>
-                <p>{review.feeling}</p>
-                <p>{review.understanding}</p>
-                <p>{review.support}</p>
-                <p>{review.comment}</p>
-                </div>
-            ))}
-        </div>
 
+                <div>
+                <p>Feeling: {userReview[0].feeling}</p>
+                <p>Understanding: {userReview[1].understanding}</p>
+                <p>Support: {userReview[2].support}</p>
+                <p>Comment: {userReview[3].comment}</p>
+                </div>
+
+        </div>
+        
         <button onClick={handleSubmit}>Submit Feedback</button>
         </>
     )

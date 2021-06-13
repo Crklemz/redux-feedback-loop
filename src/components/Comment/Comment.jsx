@@ -11,7 +11,7 @@ function Comment() {
 
     const [userComment, setUserComment] = useState('');
    
-
+    //on submit the comment payload is sent to the feedback reducer, the clearField function is called, and history sends the user to the review page url
     const handleSubmit = (event) => {
         event.preventDefault();
 
