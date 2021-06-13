@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Admin() {
+function Admin(props) {
 
     const [userFeedback, setUserFeedback] = useState([]);
+
+    useEffect(() => {
+        previousFeedback();
+      }, []);
 
     const previousFeedback = () => {
         axios({
@@ -17,16 +21,17 @@ function Admin() {
         });
     }
 
-    const handleDelete = () => {
+    const handleDelete = (item) => {
         axios({
             method: 'DELETE',
-            url: '/feedback'
+            url: `/feedback/${item.id}`
+        }).then(response => {
+            console.log('response in handleDelete on admin page', response);
+            previousFeedback();
+        }).catch(error => {
+            console.log('error in handleDelete on admin page', error);
         })
     }
-
-    useEffect(() => {
-        previousFeedback();
-      }, []);
 
     return(
         <>
@@ -41,13 +46,13 @@ function Admin() {
                     </tr>
                 </thead>
                 <tbody>
-                    {userFeedback.map((item, i) => (
-                        <tr key={i}>
+                    {userFeedback.map((item, id) => (
+                        <tr key={id}>
                             <td>{item.feeling}</td>
                             <td>{item.understanding}</td>
                             <td>{item.support}</td>
                             <td>{item.comments}</td>
-                            <button onClick={handleDelete}>Delete</button>
+                            <button onClick={() => handleDelete(item)}>Delete</button>
                         </tr>
                     ))}
                 </tbody>
