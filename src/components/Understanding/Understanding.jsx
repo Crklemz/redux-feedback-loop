@@ -16,6 +16,10 @@ function Understanding() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        if (userUnderstanding === '' || userUnderstanding < 1 || userUnderstanding > 5) {
+            alert('please enter a number to proceed');
+        } else {
+
         console.log(`clicked submit in understanding component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
             understanding: Number(userUnderstanding)
@@ -23,6 +27,8 @@ function Understanding() {
         clearField();
         history.push('/support');
     }
+    return;
+}
 
     const clearField = () => {
         setUserUnderstanding('');
@@ -38,7 +44,14 @@ function Understanding() {
         </h1>
         <form onSubmit={handleSubmit}>
 
-        <input onChange={(event) => setUserUnderstanding(event.target.value)} />
+        <input 
+          required
+          type="number"
+          min="0"
+          max="5"
+          value={userUnderstanding}
+          onChange={(event) => setUserUnderstanding(Number(event.target.value))} 
+        />
 
         <button type="submit">Next</button>
 

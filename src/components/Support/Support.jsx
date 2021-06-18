@@ -16,12 +16,18 @@ function Support() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        if (userSupport === '' || userSupport < 1 || userSupport > 5) {
+            alert('please enter a number to proceed');
+        } else {
+
         console.log(`clicked submit in support component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
             support: Number(userSupport)
         }})
         clearField();
         history.push('/comment');
+        }
+    return;
     }
 
     const clearField = () => {
@@ -38,7 +44,14 @@ function Support() {
         </h1>
         <form onSubmit={handleSubmit}>
 
-        <input onChange={(event) => setUserSupport(event.target.value)} />
+        <input 
+          required
+          type="number"
+          min="0"
+          max="5"
+          value={userSupport}
+          onChange={(event) => setUserSupport(Number(event.target.value))} 
+        />
 
         <button type="submit">Next</button>
 

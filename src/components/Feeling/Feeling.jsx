@@ -16,9 +16,9 @@ function Feeling() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // if(event.target.value == undefined) {
-        //     alert('please enter a number to proceed');
-        // } else {
+        if (userFeeling === '' || userFeeling < 1 || userFeeling > 5) {
+            alert('please enter a number to proceed');
+        } else {
 
         console.log(`clicked submit in feeling component`)
         dispatch({type: 'ADD_FEEDBACK', payload: {
@@ -26,7 +26,7 @@ function Feeling() {
         }})
         clearField();
         history.push('/understanding');
-       // } ------> tried to use the if statement above to force the user to enter in a number but was unsuccessfull even with many different slight variations of this if statement above.
+        }
     return;
     }
 
@@ -42,7 +42,14 @@ function Feeling() {
         </h1>
         <form onSubmit={handleSubmit}>
 
-        <input onChange={(event) => setUserFeeling(event.target.value)} />
+        <input 
+          required
+          type="number"
+          min="0"
+          max="5"
+          value={userFeeling}
+          onChange={(event) => setUserFeeling(Number(event.target.value))} 
+        />
 
         <button type="submit">Next</button>
 
